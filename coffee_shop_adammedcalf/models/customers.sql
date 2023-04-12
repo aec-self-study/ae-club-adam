@@ -1,3 +1,7 @@
+{{ config(
+    materialized='table'
+ ) }}
+
 select
    customers.id as customer_id,
    customers.name,
@@ -11,6 +15,4 @@ left join `analytics-engineers-club.coffee_shop.orders` orders on customers.id =
 
 group by 1, 2, 3
 
-order by first_order_at 
-
-limit 5
+order by first_order_at
