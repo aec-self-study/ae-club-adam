@@ -1,0 +1,40 @@
+version: 2
+ 
+models:
+  - name: customers
+    description: '{{ doc("customers_doc") }}'
+
+    columns:
+      - name: customer_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+
+      - name: name
+        description: Name of the customer
+        tests:
+          - not_null
+      
+      - name: first_order_at 
+        description: Date the customer first ordered something
+
+      - name: number_of_orders
+        description: How many orders the customer made
+        
+  - name: customers_monthly
+    description: How many customers first ordered in a given month 
+
+    columns:
+      - name: year
+        description: Year of first order
+        tests:          
+          - not_null
+
+      - name: month
+        description: Month of first order
+        tests:
+          - not_null
+      
+      - name: customers 
+        description: Count of customers
