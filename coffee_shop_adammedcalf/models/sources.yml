@@ -1,0 +1,62 @@
+version: 2
+
+sources:
+
+  - name: coffee_shop
+    schema: coffee_shop
+    project: analytics-engineers-club
+
+    tables:
+      - name: customers
+        columns:
+        - name: id
+          description: Primary key of the model
+          tests:
+            - unique
+            - not_null
+
+        - name: name
+          description: Name of the customer
+          tests:
+            - not_null
+      
+        - name: email 
+          description: Email address of the customer
+
+      - name: orders
+        columns:
+        - name: id
+          description: Primary key of the model, order ID.
+          test:
+            - unique
+            - not null
+
+        - name: created_at
+          description: Order creation datetime
+          test:
+            - not null
+          
+        - name: customer_id
+          description: ID of the customer
+          test:
+            - not null
+
+        - name: total
+
+        - name: address
+          description: The address of the customer
+          test:
+            - not null
+
+        - name: state
+          description: The state of the customer
+          test:
+            - not null
+        
+        - name: zip
+          description: The zip code of the customer
+          test: 
+            - not null
+
+
+
