@@ -1,0 +1,40 @@
+version: 2
+ 
+models:
+  - name: stg_orders
+    description: Staging table, one row per order
+
+    columns:
+      - name: order_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+
+      - name: created_at
+        description: When the order was created
+        tests:
+          - not_null
+      
+      - name: customer_id
+        description: The customer ID associated with the order
+        tests:          
+          - not_null
+
+      - name: total
+
+      - name: address
+        description: The address associated with the order
+        tests:          
+          - not_null
+
+      - name: state
+        description: The state associated with the order
+        tests:          
+          - not_null
+      
+      - name: zip
+        description: The zipcode associated with the order
+        tests:          
+          - not_null
+      

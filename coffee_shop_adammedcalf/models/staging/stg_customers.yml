@@ -1,0 +1,22 @@
+version: 2
+ 
+models:
+  - name: stg_customers
+    description: Staging table, one row per customer
+
+    columns:
+      - name: customer_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+
+      - name: name
+        description: Name of the customer
+        tests:
+          - not_null
+      
+      - name: email 
+        description: Customer's email address
+        tests:          
+          - not_null

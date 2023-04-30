@@ -1,0 +1,20 @@
+version: 2
+ 
+models:
+  - name: stg_order_items
+    description: Staging table, one row per customer
+ 
+    columns:
+      - name: order_item_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        description: ID of the order the item is from
+        tests:
+          - not_null
+      
+      - name: product_id
+        description: ID of the product this item corresponds to
