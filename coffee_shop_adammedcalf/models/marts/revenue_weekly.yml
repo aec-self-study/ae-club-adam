@@ -1,0 +1,30 @@
+version: 2
+ 
+models:
+  - name: revenue_weekly
+    description: Weekly summary of product revenue by customer type and product category
+
+    columns:
+      - name: week
+        description: The week the revenue was gotten
+        tests:          
+          - not_null
+
+      - name: product_category
+        description: The category of products creating this revenue
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: category
+      
+      - name: customer_type 
+        description: Whether this customer is a new or a returning customer
+        tests:          
+          - accepted_values:
+              values: ['Returning', 'New']
+      
+      - name: revenue
+        description: The amount of revenue obtained
+        test:
+          - not_null

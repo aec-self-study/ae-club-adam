@@ -1,0 +1,27 @@
+version: 2
+ 
+models:
+  - name: stg_products
+    description: Staging table, one row per product
+ 
+    columns:
+      - name: product_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+
+      - name: name
+        description: Name of the product
+        tests:
+          - not_null
+      
+      - name: category
+        description: Category of the product
+        tests:
+          - not_null
+
+      - name: created_at
+        description: When the product was created
+        tests:
+          - not_null
