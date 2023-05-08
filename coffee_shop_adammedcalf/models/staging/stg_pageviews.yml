@@ -1,0 +1,35 @@
+version: 2
+ 
+models:
+  - name: stg_pageviews
+    description: Staging table, one row per page view
+ 
+    columns:
+      - name: pageview_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+      
+      - name: visitor_id
+        description: ID of the visitor. One person may have several IDs dependent on the device they use etc.
+        tests:
+          - not_null        
+
+      - name: device_type
+        description: Device type the visitor used
+        tests:
+          - not_null
+
+      - name: timestamp
+        description: Time the page view happened
+        tests:
+          - not_null
+        
+      - name: page
+        description: The page visited
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: The ID of the customer, if recognised. Null if not.

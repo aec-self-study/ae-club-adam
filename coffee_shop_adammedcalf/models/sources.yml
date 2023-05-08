@@ -35,36 +35,36 @@ sources:
         columns:
         - name: id
           description: Primary key of the model, order ID.
-          test:
+          tests:
             - unique
-            - not null
+            - not_null
 
         - name: created_at
           description: Order creation datetime
-          test:
-            - not null
+          tests:
+            - not_null
           
         - name: customer_id
           description: ID of the customer
-          test:
-            - not null
+          tests:
+            - not_null
 
         - name: total
 
         - name: address
           description: The address of the customer
-          test:
-            - not null
+          tests:
+            - not_null
 
         - name: state
           description: The state of the customer
-          test:
-            - not null
+          tests:
+            - not_null
         
         - name: zip
           description: The zip code of the customer
-          test: 
-            - not null
+          tests: 
+            - not_null
 
       - name: order_items
 
@@ -104,7 +104,7 @@ sources:
 
         - name: created_at
           description: The date the product was created at
-          test:
+          tests:
             - not_null
 
       - name: product_prices
@@ -128,10 +128,49 @@ sources:
 
         - name: created_at
           description: The date the product price was valid from
-          test:
+          tests:
             - not_null
 
         - name: ended_at
           description: The date the product price was valid until
-          test:
+          tests:
             - not_null
+
+  - name: web_tracking
+    schema: web_tracking
+    project: analytics-engineers-club
+
+    tables:
+
+      - name: pageviews
+
+        columns:
+        - name: id
+          description: Primary key of the model
+          tests:
+            - not_null
+            - unique
+
+        - name: visitor_id
+          description: ID of the visitor. One person may have several IDs dependent on the device they use etc.
+          tests:
+            - not_null
+        
+        - name: device_type
+          description: Device type the visitor used
+          tests:
+            - not_null
+
+        - name: timestamp
+          description: Time the page view happened
+          tests:
+            - not_null
+        
+        - name: page
+          description: The page visited
+          tests:
+            - not_null
+
+        - name: customer_id
+          description: The ID of the customer, if recognised. Null if not.
+          
