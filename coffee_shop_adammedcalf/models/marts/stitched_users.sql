@@ -2,7 +2,7 @@
 
 WITH first_visitor_id_for_customer AS (
   SELECT customer_id, visitor_id
-  FROM  `analytics-engineers-club.web_tracking.pageviews`
+  FROM  {{ ref('stg_pageviews') }}
   
 WHERE customer_id IS NOT NULL
 
@@ -16,7 +16,7 @@ SELECT DISTINCT page_views.customer_id,
 page_views.visitor_id,
 fvid.visitor_id AS first_visitor_id
 
-FROM `analytics-engineers-club.web_tracking.pageviews` page_views
+FROM {{ ref('stg_pageviews') }} page_views
 
 JOIN first_visitor_id_for_customer fvid
 ON fvid.customer_id = page_views.customer_id 
@@ -25,12 +25,11 @@ WHERE page_views.customer_id IS NOT NULL
 )
 
 SELECT pv.* EXCEPT(visitor_id),
-avids.first_visitor_id AS visitor_id
+IFNULL(avids.first_visitor_id, pv.visitor_id) AS visitor_id
 
-FROM `analytics-engineers-club.web_tracking.pageviews` pv
+FROM {{ ref('stg_pageviews') }} pv
 
 LEFT JOIN all_visitor_ids_for_customer avids
 ON pv.visitor_id = avids.visitor_id
-
 
 ORDER BY timestamp

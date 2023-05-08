@@ -1,0 +1,35 @@
+version: 2
+ 
+models:
+  - name: stitched_users
+    description: 1 row per page view, with all records from a single customer identified with a single visitor_id 
+
+    columns:
+      - name: pageview_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+
+      - name: visitor_id
+        description: ID of the visitor. All records for a given customer will have the same visitor ID. The first visitor ID detected for this customer is the one we use.
+        tests:
+          - not_null        
+
+      - name: device_type
+        description: Device type the visitor used
+        tests:
+          - not_null
+
+      - name: timestamp
+        description: Time the page view happened
+        tests:
+          - not_null
+        
+      - name: page
+        description: The page visited
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: The ID of the customer, if recognised. Null if not.
