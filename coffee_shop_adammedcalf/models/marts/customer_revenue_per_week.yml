@@ -1,0 +1,26 @@
+version: 2
+ 
+models:
+  - name: customer_revenue_per_week
+    description: 1 row per customer per week since they first ordered, with the total and cumulative revenue for that week
+
+    columns:
+      - name: customer_id
+        description: ID of the customer concerned
+        tests:
+          - not_null
+
+      - name: week
+        description: Number of weeks since the customer's first order. 1 is the first week they ever ordered.
+        tests:
+          - not_null        
+
+      - name: revenue
+        description: The total revenue the customer provided that week.
+        tests:
+          - not_null
+
+      - name: cumulative_revenue
+        description: The total revenue up until this week for the customer concerned.
+        tests:
+          - not_null
