@@ -1,7 +1,7 @@
 version: 2
  
 models:
-  - name: stitched_users
+  - name: stitched_users_pageviews
     description: 1 row per page view, with all records from a single customer identified with a single visitor_id 
 
     columns:
@@ -33,3 +33,6 @@ models:
 
       - name: customer_id
         description: The ID of the customer, if recognised. Null if not.
+
+      - name: session_id
+        description: An ID corresponding to the session this view took place in. A session is a continuous sequence of browsing by a given visitor_id where there has not been a gap of more than 30 minutes.
