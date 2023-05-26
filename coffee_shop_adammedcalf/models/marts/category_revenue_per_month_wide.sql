@@ -4,7 +4,7 @@ select
   date_trunc(week, month) as date_month,  
 
   {% for category_type in category_types %}
-  sum(case when product_category = '{{ category_type | replace(" ", "_") }}' then revenue end) as {{ category_type | replace(" ", "_")  }}_amount
+  sum(case when product_category = '{{ category_type }}' then revenue end) as {{ category_type | replace(" ", "_")  }}_amount
   {% if not loop.last %},{% endif %}
   {% endfor %}
 
