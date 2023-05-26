@@ -1,0 +1,27 @@
+version: 2
+ 
+models:
+  - name: category_revenue_per_month_wide
+    description: 1 row per month with the total revenue that month (based on week start date) for certain categories
+
+    columns:
+      - name: date_month
+        description: The month concerned
+        tests:
+          - not_null
+          - unique
+
+      - name: coffee_beans_amount
+        description: Revenue from coffee beans
+        tests:
+          - not_null        
+
+      - name: merch_amount
+        description: Revenue from merch
+        tests:
+          - not_null
+
+      - name: brewing_supplies_amount
+        description: The total revenue from brewing supplies
+        tests:
+          - not_null
