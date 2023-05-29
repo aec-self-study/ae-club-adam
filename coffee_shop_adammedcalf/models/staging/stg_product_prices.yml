@@ -3,6 +3,11 @@ version: 2
 models:
   - name: stg_product_prices
     description: Staging table, one row per pricing period per product
+    tests:
+      - dbt_utils.mutually_exclusive_ranges:
+          lower_bound_column: created_at
+          upper_bound_column: ended_at
+          partition_by: product_id
  
     columns:
       - name: product_price_id
