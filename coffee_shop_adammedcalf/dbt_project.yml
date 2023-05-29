@@ -35,3 +35,11 @@ models:
    coffee_shop:    
       # materialize all models in models as tables
       +materialized: table
+
+
+vars:
+  github_source:
+    github_database: analytics-engineers-club
+    github_schema: github
+  
+  github__using_repo_team: false # by default this is assumed to be true
