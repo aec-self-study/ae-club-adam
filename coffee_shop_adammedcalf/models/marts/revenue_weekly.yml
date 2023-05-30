@@ -26,5 +26,6 @@ models:
       
       - name: revenue
         description: The amount of revenue obtained
-        test:
+        tests:
           - not_null
+          - greater_than_zero
