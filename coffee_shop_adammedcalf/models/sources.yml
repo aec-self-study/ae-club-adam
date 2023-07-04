@@ -173,4 +173,10 @@ sources:
 
         - name: customer_id
           description: The ID of the customer, if recognised. Null if not.
-          
+
+  - name: advanced_dbt_examples
+    project: analytics-engineers-club
+
+    tables:
+    
+      - name: form_events
